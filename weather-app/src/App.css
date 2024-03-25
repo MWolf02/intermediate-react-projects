@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.app {
+  text-align: center;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 900px;
+  border-radius: 30px;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search-container input {
+  flex: 1;
+  height: 50px;
+  border: 2px solid #007bff;
+  border-radius: 25px;
+  padding: 0 25px;
+  font-size: 18px;
+  outline: none;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.search-container button {
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  padding: 0 40px;
+  margin-left: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+.city-name {
+  margin-bottom: 20px;
+}
+
+.loading {
+  font-size: 28px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.date {
+  font-size: 20px;
+  font-style: italic;
+  color: #555;
+}
+
+@media screen and (max-width: 600px) {
+  .app {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .search-container input {
+    width: 50%;
+    margin-bottom: 15px;
+  }
+
+  .search-container button {
+    margin-left: 0;
+  }
+}
