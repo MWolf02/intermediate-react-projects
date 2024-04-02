@@ -12,8 +12,22 @@ export default function Main() {
     totalIncome,
     setTotalIncome,
     allTransactions,
-    setAllTransactions,
+    setAllTransactions
   } = useContext(GlobalContext);
+
+  useEffect(() => {
+    // Load transactions data from local storage when the component mounts
+    const storedTransactions = JSON.parse(localStorage.getItem("transactions"));
+    if (storedTransactions) {
+      // Use initialTransactions directly to set the initial state
+      setAllTransactions(storedTransactions);
+    }
+  }, []); // Only run this effect once on mount
+
+  useEffect(() => {
+    // Save transactions data to local storage whenever transactions are updated
+    localStorage.setItem("transactions", JSON.stringify(allTransactions));
+  }, [allTransactions]);
 
   const removeItem = (id) => {
     const updatedTransactions = allTransactions.filter(
@@ -23,8 +37,8 @@ export default function Main() {
   };
 
   useEffect(() => {
-    let income = 0;
-    let expense = 0;
+    let income = 1000;
+    let expense = 500;
 
     allTransactions.forEach((item) => {
       item.type === "income"

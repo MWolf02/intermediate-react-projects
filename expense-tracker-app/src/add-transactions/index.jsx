@@ -36,16 +36,14 @@ export default function TransactionForm({ onClose, isOpen }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // Generate a new UUID
-    const newId = uuidv4();
-    // Create a new transaction object with the generated UUID
+    const newId = uuidv4(); // Generate a new UUID
+    const type = formData.type || "expense"; // Set the type to "expense" if formData.type is not set
     const newTransaction = {
       id: newId,
       description: formData.description,
       amount: parseFloat(formData.amount), // Ensure amount is converted to a number
-      type: formData.type,
+      type: type,
     };
-    // Add the new transaction to the array
     setAllTransactions([...allTransactions, newTransaction]);
     onClose(); // Close the modal
   }
