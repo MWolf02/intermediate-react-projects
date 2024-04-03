@@ -1,32 +1,32 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from "react"; // Importing createContext and useState hooks from React
 
-export const GlobalContext = createContext(null);
+export const GlobalContext = createContext(null); // Creating a context named GlobalContext
 
-export default function GlobalState({ children }) {
-  const [formData, setFormData] = useState({
+export default function GlobalState({ children }) { // Defining GlobalState component
+  const [formData, setFormData] = useState({ // State for form data
     type: "income",
     amount: 0,
     description: "",
   });
 
-  const [value, setValue] = useState("expense");
-  const [totalExpense, setTotalExpense] = useState(0);
-  const [totalIncome, setTotalIncome] = useState(0);
-  const [allTransactions, setAllTransactions] = useState([]);
+  const [value, setValue] = useState("expense"); // State for value
+  const [totalExpense, setTotalExpense] = useState(0); // State for totalExpense
+  const [totalIncome, setTotalIncome] = useState(0); // State for totalIncome
+  const [allTransactions, setAllTransactions] = useState([]); // State for allTransactions
 
-  function handleFormSubmit(currentFormData) {
-    if (!currentFormData.description || !currentFormData.amount) return;
+  function handleFormSubmit(currentFormData) { // Function to handle form submission
+    if (!currentFormData.description || !currentFormData.amount) return; // Return if description or amount is empty
 
-    setAllTransactions([
+    setAllTransactions([ // Update allTransactions with new transaction
       ...allTransactions,
-      { ...currentFormData, id: Date.now() },
+      { ...currentFormData, id: Date.now() }, // Add current form data with unique id
     ]);
   }
 
-  console.log(allTransactions);
+  console.log(allTransactions); // Log allTransactions
 
   return (
-    <GlobalContext.Provider
+    <GlobalContext.Provider // Providing values to context
       value={{
         formData,
         setFormData,
@@ -41,7 +41,7 @@ export default function GlobalState({ children }) {
         handleFormSubmit,
       }}
     >
-      {children}
+      {children} {/* Rendering children components */}
     </GlobalContext.Provider>
   );
 }
